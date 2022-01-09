@@ -1,4 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { v4 as uuid } from "uuid";
+import { useDispatch } from "react-redux";
+import { heroAdd } from "../../actions";
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
@@ -11,14 +14,32 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 // данных из фильтров
 
 const HeroesAddForm = () => {
+
+	const dispatch = useDispatch();
+
+	const pushChar = (char) => {
+		// console.log(char)
+		dispatch(heroAdd(char))
+	}
+
 	return (
 
-		<Formik>
+		<Formik
+			initialValues={{
+				name: "",
+				description: "",
+				element: ""
+			}}
+			onSubmit={(char, { resetForm }) => {
+				char.id = uuid();
+				pushChar(char)
+				resetForm();
+			}}
+		>
 			<Form className="border p-4 shadow-lg rounded">
 				<div className="mb-3">
 					<label htmlFor="name" className="form-label fs-4">Имя нового героя</label>
-					<input
-						required
+					<Field
 						type="text"
 						name="name"
 						className="form-control"
@@ -28,19 +49,19 @@ const HeroesAddForm = () => {
 
 				<div className="mb-3">
 					<label htmlFor="text" className="form-label fs-4">Описание</label>
-					<textarea
-						required
-						name="text"
+					<Field
+						name="description"
 						className="form-control"
-						id="text"
+						as="textarea"
+						id="description"
 						placeholder="Что я умею?"
 						style={{ "height": '130px' }} />
 				</div>
 
 				<div className="mb-3">
 					<label htmlFor="element" className="form-label">Выбрать элемент героя</label>
-					<select
-						required
+					<Field
+						as="select"
 						className="form-select"
 						id="element"
 						name="element">
@@ -49,7 +70,7 @@ const HeroesAddForm = () => {
 						<option value="water">Вода</option>
 						<option value="wind">Ветер</option>
 						<option value="earth">Земля</option>
-					</select>
+					</Field>
 				</div>
 
 				<button type="submit" className="btn btn-primary">Создать</button>
