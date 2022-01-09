@@ -1,6 +1,9 @@
 import { useSelector } from "react-redux";
-// import { filtersAdd } from "../../actions";
+import { useState } from "react";
+import { filterHeroes } from "../../actions";
+import { useDispatch } from "react-redux";
 
+import './heroesFilters.css'
 
 // Задача для этого компонента:
 // Фильтры должны формироваться на основании загруженных данных
@@ -11,9 +14,15 @@ import { useSelector } from "react-redux";
 
 const HeroesFilters = () => {
 
-	const { filters } = useSelector(state => state)
+	const dispatch = useDispatch();
 
-	const switchBtn = (filter, option) => {
+	const [activeFilter, setActiveFilter] = useState('all');
+
+	const { filters, sortHeroes } = useSelector(state => state)
+
+	console.log(sortHeroes)
+
+	const switchBtn = (filter) => {
 		switch (filter) {
 			case 'fire':
 				return "btn-danger"
@@ -24,14 +33,20 @@ const HeroesFilters = () => {
 			case 'earth':
 				return "btn-secondary"
 			case 'all':
-				return "btn-outline-dark active"
+				return "btn-outline-dark"
 		}
+	}
+
+	const activeFilters = (filter) => {
+		setActiveFilter(filter);
+		dispatch(filterHeroes(filter));
 	}
 
 	const renderButtons = (filters) => {
 		return filters.map(({ option, filter }) => {
 			let crazy = switchBtn(filter)
-			return <button className={`btn ${crazy}`}>{option}</button>
+			if (filter === activeFilter) crazy += ' active'
+			return <button key={filter} onClick={() => activeFilters(filter)} className={`btn ${crazy}`}>{option}</button>
 		})
 	}
 
