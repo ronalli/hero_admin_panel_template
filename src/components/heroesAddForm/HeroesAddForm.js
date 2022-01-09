@@ -1,7 +1,9 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { v4 as uuid } from "uuid";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { heroAdd } from "../../actions";
+import { heroAdd, filtersAdd } from "../../actions";
+import { useHttp } from "../../hooks/http.hook";
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
@@ -15,11 +17,34 @@ import { heroAdd } from "../../actions";
 
 const HeroesAddForm = () => {
 
+	const [elements, setElements] = useState([]);
+	const { request } = useHttp();
 	const dispatch = useDispatch();
 
+	useEffect(() => {
+		request('http://localhost:3001/filters')
+			.then(data => {
+				setElements(data)
+				dispatch(filtersAdd(data))
+			})
+			.catch(() => console.log('error'))
+	}, [])
+
+
+
 	const pushChar = (char) => {
-		// console.log(char)
 		dispatch(heroAdd(char))
+		request('http://localhost:3001/heroes', "POST", JSON.stringify(char))
+	}
+
+	const onget = () => {
+		return (
+			elements.map((element, index) => {
+				console.log()
+				if (index === 0) return <option key={index}>Я владею элементом...</option>
+				return <option key={index} value={element.filter}>{element.option}</option>
+			})
+		)
 	}
 
 	return (
@@ -65,11 +90,7 @@ const HeroesAddForm = () => {
 						className="form-select"
 						id="element"
 						name="element">
-						<option >Я владею элементом...</option>
-						<option value="fire">Огонь</option>
-						<option value="water">Вода</option>
-						<option value="wind">Ветер</option>
-						<option value="earth">Земля</option>
+						{onget()}
 					</Field>
 				</div>
 

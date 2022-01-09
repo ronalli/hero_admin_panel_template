@@ -23,3 +23,10 @@ export const heroAdd = (hero) => {
 		payload: hero
 	}
 }
+
+export const filtersAdd = (filters) => {
+	return {
+		type: 'FILTERS_ADD',
+		payload: filters
+	}
+}
