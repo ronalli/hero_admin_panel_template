@@ -20,7 +20,7 @@ const HeroesFilters = () => {
 
 	const { filters, sortHeroes } = useSelector(state => state)
 
-	console.log(sortHeroes)
+	// console.log(sortHeroes)
 
 	const switchBtn = (filter) => {
 		switch (filter) {
