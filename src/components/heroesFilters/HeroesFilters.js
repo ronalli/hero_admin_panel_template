@@ -1,7 +1,6 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { filterHeroes } from "../../actions";
-import { useDispatch } from "react-redux";
 
 import './heroesFilters.css'
 
@@ -18,9 +17,7 @@ const HeroesFilters = () => {
 
 	const [activeFilter, setActiveFilter] = useState('all');
 
-	const { filters, sortHeroes } = useSelector(state => state)
-
-	// console.log(sortHeroes)
+	const { filters } = useSelector(state => state)
 
 	const switchBtn = (filter) => {
 		switch (filter) {
