@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
 import { filterHeroes } from "../../actions";
 
 import './heroesFilters.css'

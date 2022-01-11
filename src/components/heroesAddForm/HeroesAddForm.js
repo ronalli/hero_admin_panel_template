@@ -1,5 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { v4 as uuid } from "uuid";
+import * as Yup from 'yup'
+
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { heroAdd, filtersAdd } from "../../actions";
@@ -41,7 +43,7 @@ const HeroesAddForm = () => {
 		return (
 			elements.map((element, index) => {
 				console.log()
-				if (index === 0) return <option key={index}>Я владею элементом...</option>
+				if (index === 0) return <option value="" key={index}>Я владею элементом...</option>
 				return <option key={index} value={element.filter}>{element.option}</option>
 			})
 		)
@@ -55,6 +57,18 @@ const HeroesAddForm = () => {
 				description: "",
 				element: ""
 			}}
+			validationSchema={
+				Yup.object({
+					name: Yup.string()
+						.min(3, 'Min length name three symbols')
+						.required('Required field'),
+					description: Yup.string()
+						.min(10, 'Min length description ten symbols')
+						.required('Required field'),
+					element: Yup.string()
+						.required('Required field')
+				})
+			}
 			onSubmit={(char, { resetForm }) => {
 				char.id = uuid();
 				pushChar(char)
@@ -70,6 +84,8 @@ const HeroesAddForm = () => {
 						className="form-control"
 						id="name"
 						placeholder="Как меня зовут?" />
+					<ErrorMessage className="error" name="name" component="div" />
+
 				</div>
 
 				<div className="mb-3">
@@ -81,6 +97,8 @@ const HeroesAddForm = () => {
 						id="description"
 						placeholder="Что я умею?"
 						style={{ "height": '130px' }} />
+					<ErrorMessage className="error" name="description" component="div" />
+
 				</div>
 
 				<div className="mb-3">
@@ -92,6 +110,7 @@ const HeroesAddForm = () => {
 						name="element">
 						{onget()}
 					</Field>
+					<ErrorMessage className="error" name="element" component="div" />
 				</div>
 
 				<button type="submit" className="btn btn-primary">Создать</button>

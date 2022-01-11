@@ -28,7 +28,6 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				heroes: [...state.heroes, action.payload],
-				// activeFilter: ''
 			}
 		case 'FILTERS_ADD':
 			return {
@@ -45,7 +44,7 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				heroes: state.heroes.filter(item => item.id !== action.payload),
-				activeFilter: ''
+				// activeFilter: ''
 			}
 		default: return state
 	}
