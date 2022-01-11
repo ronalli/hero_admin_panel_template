@@ -1,56 +1,56 @@
 {
-	"heroes": [
-		{
-			"id": "1",
-			"name": "Первый герой",
-			"description": "Первый герой в рейтинге!",
-			"element": "fire"
-		},
-		{
-			"id": "2",
-			"name": "Неизвестный герой",
-			"description": "Скрывающийся в тени",
-			"element": "wind"
-		},
-		{
-			"id": "3",
-			"name": "Морской герой",
-			"description": "Как аквамен, но не из DC",
-			"element": "water"
-		},
-		{
-			"name": "Nikita",
-			"description": "ыавыв",
-			"element": "fire",
-			"id": "1fc1b6c9-4a27-4ed8-9e8c-2a04f05649d7"
-		},
-		{
-			"name": "Сергей",
-			"description": "tartwer",
-			"element": "wind",
-			"id": "34939387-4862-408f-ad56-a5cf402a3c61"
-		}
-	],
-	"filters": [
-		{
-			"filter": "all",
-			"option": "все"
-		},
-		{
-			"filter": "fire",
-			"option": "огонь"
-		},
-		{
-			"filter": "water",
-			"option": "вода"
-		},
-		{
-			"filter": "wind",
-			"option": "ветер"
-		},
-		{
-			"filter": "earth",
-			"option": "земля"
-		}
-	]
+  "heroes": [
+    {
+      "name": "Tom",
+      "description": "",
+      "element": "wind",
+      "id": "9ac054fd-4c8b-414c-9d52-7bec281940ea"
+    },
+    {
+      "name": "Dark",
+      "description": "",
+      "element": "earth",
+      "id": "9c1a0175-97c5-4d3e-8046-555d7706cc8c"
+    },
+    {
+      "name": "Bob",
+      "description": "",
+      "element": "fire",
+      "id": "62aa7db4-56e6-4354-84d7-fd3e1b23f1d2"
+    },
+    {
+      "name": "Jonh",
+      "description": "",
+      "element": "wind",
+      "id": "42a32930-ff13-4e54-a14b-759052d854b8"
+    },
+    {
+      "name": "Mark",
+      "description": "",
+      "element": "water",
+      "id": "593fa571-ce9c-4fc8-a5b2-ab6c3c712ad8"
+    }
+  ],
+  "filters": [
+    {
+      "filter": "all",
+      "option": "все"
+    },
+    {
+      "filter": "fire",
+      "option": "огонь"
+    },
+    {
+      "filter": "water",
+      "option": "вода"
+    },
+    {
+      "filter": "wind",
+      "option": "ветер"
+    },
+    {
+      "filter": "earth",
+      "option": "земля"
+    }
+  ]
 }

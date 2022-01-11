@@ -14,10 +14,7 @@ import './heroesFilters.css'
 const HeroesFilters = () => {
 
 	const dispatch = useDispatch();
-
-	const [activeFilter, setActiveFilter] = useState('all');
-
-	const { filters } = useSelector(state => state)
+	const { filters, activeFilter } = useSelector(state => state)
 
 	const switchBtn = (filter) => {
 		switch (filter) {
@@ -35,7 +32,6 @@ const HeroesFilters = () => {
 	}
 
 	const activeFilters = (filter) => {
-		setActiveFilter(filter);
 		dispatch(filterHeroes(filter));
 	}
 
