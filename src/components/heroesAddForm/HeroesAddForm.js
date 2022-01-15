@@ -32,14 +32,12 @@ const HeroesAddForm = () => {
 			.catch(() => console.log('error'))
 	}, [])
 
-
-
 	const pushChar = (char) => {
 		dispatch(heroAdd(char))
 		request('http://localhost:3001/heroes', "POST", JSON.stringify(char))
 	}
 
-	const onget = () => {
+	const renderFilters = () => {
 		return (
 			elements.map((element, index) => {
 				console.log()
@@ -108,7 +106,7 @@ const HeroesAddForm = () => {
 						className="form-select"
 						id="element"
 						name="element">
-						{onget()}
+						{renderFilters()}
 					</Field>
 					<ErrorMessage className="error" name="element" component="div" />
 				</div>

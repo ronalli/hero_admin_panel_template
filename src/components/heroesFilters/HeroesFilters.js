@@ -38,7 +38,10 @@ const HeroesFilters = () => {
 		return filters.map(({ option, filter }) => {
 			let crazy = switchBtn(filter)
 			if (filter === activeFilter) crazy += ' active'
-			return <button key={filter} onClick={() => activeFilters(filter)} className={`btn ${crazy}`}>{option}</button>
+			return <button
+				key={filter}
+				onClick={() => activeFilters(filter)}
+				className={`btn ${crazy}`}>{option}</button>
 		})
 	}
 

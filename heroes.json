@@ -1,18 +1,6 @@
 {
   "heroes": [
     {
-      "name": "Bob",
-      "description": "",
-      "element": "fire",
-      "id": "62aa7db4-56e6-4354-84d7-fd3e1b23f1d2"
-    },
-    {
-      "name": "Jonh",
-      "description": "",
-      "element": "wind",
-      "id": "5e9dfa77-2d4f-4af6-9bfc-73af90dab86a"
-    },
-    {
       "name": "Nikita",
       "description": "i am programmer, i have no life",
       "element": "earth",
@@ -23,6 +11,18 @@
       "description": "my life, my rules",
       "element": "water",
       "id": "8a7cd1b8-0785-4f75-bc0c-0f739b5526dd"
+    },
+    {
+      "name": "Bob",
+      "description": "i want life in Kharkov",
+      "element": "fire",
+      "id": "4d2efb1f-57b8-49bb-b20d-237faa70a621"
+    },
+    {
+      "name": "Jonh",
+      "description": "I need really quickly buy fruit",
+      "element": "wind",
+      "id": "496cfe6b-76fe-4363-b6cf-9d8595aa7be9"
     }
   ],
   "filters": [
