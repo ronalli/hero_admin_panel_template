@@ -1,12 +1,6 @@
 {
   "heroes": [
     {
-      "name": "Dark",
-      "description": "",
-      "element": "earth",
-      "id": "9c1a0175-97c5-4d3e-8046-555d7706cc8c"
-    },
-    {
       "name": "Bob",
       "description": "",
       "element": "fire",
@@ -19,10 +13,16 @@
       "id": "5e9dfa77-2d4f-4af6-9bfc-73af90dab86a"
     },
     {
-      "name": "Tom",
-      "description": "I am game with life",
+      "name": "Nikita",
+      "description": "i am programmer, i have no life",
+      "element": "earth",
+      "id": "ea086fa7-2627-4d44-9688-f6d7c3b9ce98"
+    },
+    {
+      "name": "Greg",
+      "description": "my life, my rules",
       "element": "water",
-      "id": "7f7ef581-f03f-4260-a81b-b7eeb7d34ea6"
+      "id": "8a7cd1b8-0785-4f75-bc0c-0f739b5526dd"
     }
   ],
   "filters": [

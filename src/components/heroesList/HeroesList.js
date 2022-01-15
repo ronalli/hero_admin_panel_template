@@ -1,8 +1,8 @@
 import { useHttp } from '../../hooks/http.hook';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { heroesFetching, heroesFetched, heroesFetchingError } from '../../actions';
+import { heroesFetching, heroesFetched, heroesFetchingError, deleteHero } from '../../actions';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
@@ -12,13 +12,16 @@ import Spinner from '../spinner/Spinner';
 // Удаление идет и с json файла при помощи метода DELETE
 
 const HeroesList = () => {
-	const { heroes, heroesLoadingStatus, sortHeroes, activeFilter } = useSelector(state => state);
+	const { heroesLoadingStatus, sortHeroes } = useSelector(state => state);
 	const dispatch = useDispatch();
 	const { request } = useHttp();
 
-	let renderHeroes = heroes;
-
-	if (sortHeroes.length !== 0 && activeFilter) renderHeroes = sortHeroes;
+	const onDelete = useCallback((id) => {
+		dispatch(deleteHero(id))
+		request(`http://localhost:3001/heroes/${id}`, "DELETE")
+			.then(data => console.log('deleted'))
+			.catch(err => console.log(err))
+	}, [request])
 
 	useEffect(() => {
 		dispatch(heroesFetching());
@@ -39,12 +42,12 @@ const HeroesList = () => {
 		if (arr.length === 0) {
 			return <h5 className="text-center mt-5">Героев пока нет</h5>
 		}
-		return arr.map(({ ...props }) => {
-			return <HeroesListItem key={props.id} {...props} />
+		return arr.map(({ id, ...props }) => {
+			return <HeroesListItem key={id} {...props} onDelete={() => onDelete(id)} />
 		})
 	}
 
-	const elements = renderHeroesList(renderHeroes);
+	const elements = renderHeroesList(sortHeroes);
 	return (
 		<ul>
 			{elements}
