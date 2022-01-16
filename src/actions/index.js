@@ -40,7 +40,7 @@ export const filterHeroes = (filter) => {
 
 export const deleteHero = (id) => {
 	return {
-		type: 'DELETE_HERO',
+		type: 'HERO_DELETE',
 		payload: id
 	}
 }

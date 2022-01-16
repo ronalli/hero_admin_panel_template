@@ -1,7 +1,6 @@
 const initialState = {
 	heroes: [],
 	heroesLoadingStatus: 'idle',
-	sortHeroes: [],
 }
 
 const heroes = (state = initialState, action) => {
@@ -27,7 +26,7 @@ const heroes = (state = initialState, action) => {
 				...state,
 				heroes: [...state.heroes, action.payload],
 			}
-		case 'DELETE_HERO':
+		case 'HERO_DELETE':
 			return {
 				...state,
 				heroes: state.heroes.filter(item => item.id !== action.payload),
