@@ -13,16 +13,16 @@
       "id": "8a7cd1b8-0785-4f75-bc0c-0f739b5526dd"
     },
     {
-      "name": "Bob",
-      "description": "i want life in Kharkov",
-      "element": "fire",
-      "id": "4d2efb1f-57b8-49bb-b20d-237faa70a621"
-    },
-    {
       "name": "Jonh",
       "description": "I need really quickly buy fruit",
       "element": "wind",
       "id": "496cfe6b-76fe-4363-b6cf-9d8595aa7be9"
+    },
+    {
+      "name": "Bob",
+      "description": "ggdfhdfhfg",
+      "element": "fire",
+      "id": "ffc4de01-a3f6-473f-9bec-6b01e583d21c"
     }
   ],
   "filters": [
