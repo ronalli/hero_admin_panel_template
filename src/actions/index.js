@@ -6,6 +6,11 @@ export const fetchHeroes = (request) => (dispatch) => {
 }
 
 
+export const fetchFiltres = (request) => (dispatch) => {
+	request('http://localhost:3001/filters')
+		.then(data => dispatch(filtersAdd(data)))
+		.catch(err => console.log(err))
+}
 
 export const heroesFetching = () => {
 	return {

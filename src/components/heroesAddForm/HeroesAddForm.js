@@ -2,34 +2,19 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { v4 as uuid } from "uuid";
 import * as Yup from 'yup'
 
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { heroAdd, filtersAdd } from "../../actions";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFiltres, heroAdd } from "../../actions";
 import { useHttp } from "../../hooks/http.hook";
-
-// Задача для этого компонента:
-// Реализовать создание нового героя с введенными данными. Он должен попадать
-// в общее состояние и отображаться в списке + фильтроваться
-// Уникальный идентификатор персонажа можно сгенерировать через uiid
-// Усложненная задача:
-// Персонаж создается и в файле json при помощи метода POST
-// Дополнительно:
-// Элементы <option></option> желательно сформировать на базе
-// данных из фильтров
 
 const HeroesAddForm = () => {
 
-	const [elements, setElements] = useState([]);
+	const { filters } = useSelector(state => state.filters)
 	const { request } = useHttp();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		request('http://localhost:3001/filters')
-			.then(data => {
-				setElements(data)
-				dispatch(filtersAdd(data))
-			})
-			.catch(() => console.log('error'))
+		dispatch(fetchFiltres(request))
 	}, [])
 
 	const pushChar = (char) => {
@@ -39,8 +24,7 @@ const HeroesAddForm = () => {
 
 	const renderFilters = () => {
 		return (
-			elements.map((element, index) => {
-				console.log()
+			filters.map((element, index) => {
 				if (index === 0) return <option value="" key={index}>Я владею элементом...</option>
 				return <option key={index} value={element.filter}>{element.option}</option>
 			})
