@@ -4,7 +4,9 @@ import * as Yup from 'yup'
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFiltres, heroAdd } from "../../actions";
+import { fetchFiltres } from "../../actions";
+import { heroAdd } from "../heroesList/heroesSlice";
+
 import { useHttp } from "../../hooks/http.hook";
 
 const HeroesAddForm = () => {
