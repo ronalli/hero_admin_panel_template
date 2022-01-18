@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { filterHeroes } from "../../actions";
+import { filterHeroes } from "./filtersSlice";
 
 import './heroesFilters.css'
 

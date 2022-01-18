@@ -1,5 +1,5 @@
-import { createAction } from "@reduxjs/toolkit";
-import { heroesFetching, heroesFetched, heroesFetchingError } from '../components/heroesList/heroesSlice'
+import { heroesFetching, heroesFetched, heroesFetchingError } from '../components/heroesList/heroesSlice';
+import { filtersAdd } from '../components/heroesFilters/filtersSlice';
 
 export const fetchHeroes = (request) => (dispatch) => {
 	dispatch(heroesFetching());
@@ -14,8 +14,3 @@ export const fetchFiltres = (request) => (dispatch) => {
 		.then(data => dispatch(filtersAdd(data)))
 		.catch(err => console.log(err))
 }
-
-export const filtersAdd = createAction('FILTERS_ADD')
-
-export const filterHeroes = createAction('FILTER_HEROES')
-
