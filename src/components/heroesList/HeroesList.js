@@ -5,8 +5,7 @@ import { createSelector } from 'reselect';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import { fetchHeroes } from '../../actions';
-import { heroDeleted } from './heroesSlice'
+import { heroDeleted, fetchHeroes } from './heroesSlice'
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
@@ -39,7 +38,7 @@ const HeroesList = () => {
 	}, [request])
 
 	useEffect(() => {
-		dispatch(fetchHeroes(request))
+		dispatch(fetchHeroes())
 	}, []);
 
 	if (heroesLoadingStatus === "loading") {
