@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFiltres } from "../../actions";
+import { fetchFilters } from "../heroesFilters/filtersSlice";
 import { heroAdd } from "../heroesList/heroesSlice";
 
 import { useHttp } from "../../hooks/http.hook";
@@ -16,7 +16,7 @@ const HeroesAddForm = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchFiltres(request))
+		dispatch(fetchFilters())
 	}, [])
 
 	const pushChar = (char) => {

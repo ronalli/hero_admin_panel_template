@@ -14,7 +14,6 @@ export const fetchHeroes = createAsyncThunk(
 	}
 )
 
-
 const heroesSlice = createSlice({
 	name: 'heroes',
 	initialState,
@@ -23,7 +22,7 @@ const heroesSlice = createSlice({
 			state.heroes.push(action.payload);
 		},
 		heroDeleted: (state, action) => {
-			state.heroes = state.heroes.filter(item => item.id !== action.payload)
+			state.heroes = state.heroes.filter(item => item.id !== action.payload);
 		}
 	},
 	extraReducers: (builder) => {
