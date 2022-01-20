@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
-import { filterHeroes } from "./filtersSlice";
+import { filterHeroes, selectAll } from "./filtersSlice";
 
 import './heroesFilters.css'
 
 const HeroesFilters = () => {
 
 	const dispatch = useDispatch();
-	const { filters, activeFilter } = useSelector(state => state.filters)
-
+	const { activeFilter } = useSelector(state => state.filters)
+	const filters = useSelector(selectAll)
 	const switchBtn = (filter) => {
 		switch (filter) {
 			case 'fire':

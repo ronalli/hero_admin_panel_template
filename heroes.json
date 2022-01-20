@@ -1,56 +1,61 @@
 {
-  "heroes": [
-    {
-      "name": "Nikita",
-      "description": "i am programmer, i have no life",
-      "element": "earth",
-      "id": "ea086fa7-2627-4d44-9688-f6d7c3b9ce98"
-    },
-    {
-      "name": "Greg",
-      "description": "my life, my rules",
-      "element": "water",
-      "id": "8a7cd1b8-0785-4f75-bc0c-0f739b5526dd"
-    },
-    {
-      "name": "Jonh",
-      "description": "I need really quickly buy fruit",
-      "element": "wind",
-      "id": "496cfe6b-76fe-4363-b6cf-9d8595aa7be9"
-    },
-    {
-      "name": "Bob",
-      "description": "i really like a cat",
-      "element": "fire",
-      "id": "0b0ba2c8-8086-4c8d-a224-371fc75e6855"
-    },
-    {
-      "name": "Mark",
-      "description": "I would like to travel around the world",
-      "element": "water",
-      "id": "5ea1b1de-5f48-4789-832c-09ee8457512d"
-    }
-  ],
-  "filters": [
-    {
-      "filter": "all",
-      "option": "все"
-    },
-    {
-      "filter": "fire",
-      "option": "огонь"
-    },
-    {
-      "filter": "water",
-      "option": "вода"
-    },
-    {
-      "filter": "wind",
-      "option": "ветер"
-    },
-    {
-      "filter": "earth",
-      "option": "земля"
-    }
-  ]
+	"heroes": [
+		{
+			"name": "Nikita",
+			"description": "i am programmer, i have no life",
+			"element": "earth",
+			"id": "ea086fa7-2627-4d44-9688-f6d7c3b9ce98"
+		},
+		{
+			"name": "Greg",
+			"description": "my life, my rules",
+			"element": "water",
+			"id": "8a7cd1b8-0785-4f75-bc0c-0f739b5526dd"
+		},
+		{
+			"name": "Jonh",
+			"description": "I need really quickly buy fruit",
+			"element": "wind",
+			"id": "496cfe6b-76fe-4363-b6cf-9d8595aa7be9"
+		},
+		{
+			"name": "Bob",
+			"description": "i really like a cat",
+			"element": "fire",
+			"id": "0b0ba2c8-8086-4c8d-a224-371fc75e6855"
+		},
+		{
+			"name": "Mark",
+			"description": "I would like to travel around the world",
+			"element": "water",
+			"id": "4a4c1707-f8e7-4c25-bd74-5cac2dbdd3fd"
+		}
+	],
+	"filters": [
+		{
+			"id": "1",
+			"filter": "all",
+			"option": "все"
+		},
+		{
+			"id": "2",
+			"filter": "fire",
+			"option": "огонь"
+		},
+		{
+			"id": "3",
+			"filter": "water",
+			"option": "вода"
+		},
+		{
+			"id": "4",
+			"filter": "wind",
+			"option": "ветер"
+		},
+		{
+			"id": "5",
+			"filter": "earth",
+			"option": "земля"
+		}
+	]
 }

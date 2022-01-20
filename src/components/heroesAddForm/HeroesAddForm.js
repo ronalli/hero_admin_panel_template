@@ -4,14 +4,14 @@ import * as Yup from 'yup'
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFilters } from "../heroesFilters/filtersSlice";
+import { fetchFilters, selectAll } from "../heroesFilters/filtersSlice";
 import { heroAdd } from "../heroesList/heroesSlice";
 
 import { useHttp } from "../../hooks/http.hook";
 
 const HeroesAddForm = () => {
 
-	const { filters } = useSelector(state => state.filters)
+	const filters = useSelector(selectAll);
 	const { request } = useHttp();
 	const dispatch = useDispatch();
 
