@@ -7,9 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchFilters, selectAll } from "../heroesFilters/filtersSlice";
 import { heroAdd } from "../heroesList/heroesSlice";
 
+import { useCreateHeroMutation } from "../../api/apiSlice";
 import { useHttp } from "../../hooks/http.hook";
 
 const HeroesAddForm = () => {
+
+	const [createHero, { isLoading }] = useCreateHeroMutation();
 
 	const filters = useSelector(selectAll);
 	const { request } = useHttp();
@@ -55,7 +58,8 @@ const HeroesAddForm = () => {
 			}
 			onSubmit={(char, { resetForm }) => {
 				char.id = uuid();
-				pushChar(char)
+				createHero(char).unwrap();
+				// pushChar(char)
 				resetForm();
 			}}
 		>
