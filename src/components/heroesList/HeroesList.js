@@ -1,9 +1,7 @@
 import { useHttp } from '../../hooks/http.hook';
 import { useEffect, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { createSelector } from 'reselect';
-
-import { useGetHeroesQuery } from '../../api/apiSlice';
+import { useGetHeroesQuery, useDeleteHeroMutation } from '../../api/apiSlice';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
@@ -17,10 +15,11 @@ const HeroesList = () => {
 
 	const {
 		data: heroes = [],
-		isFetching,
 		isLoading,
 		isError
 	} = useGetHeroesQuery()
+
+	const [deleteHero] = useDeleteHeroMutation();
 
 	const activeFilter = useSelector(state => state.filters.activeFilter)
 
@@ -72,7 +71,7 @@ const HeroesList = () => {
 				>
 					<HeroesListItem
 						{...props}
-						onDelete={() => onDelete(id)} />
+						onDelete={() => deleteHero(id)} />
 				</CSSTransition>
 			)
 		})
