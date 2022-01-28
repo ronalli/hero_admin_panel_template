@@ -1,13 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
-import { filterHeroes, selectAll } from "./filtersSlice";
+import { filterHeroes } from "./filtersSlice";
+
+import { useGetFiltersQuery } from "../../api/apiSlice";
 
 import './heroesFilters.css'
 
 const HeroesFilters = () => {
 
+	const {
+		data: filters = [],
+	} = useGetFiltersQuery();
+
 	const dispatch = useDispatch();
 	const { activeFilter } = useSelector(state => state.filters)
-	const filters = useSelector(selectAll)
 	const switchBtn = (filter) => {
 		switch (filter) {
 			case 'fire':

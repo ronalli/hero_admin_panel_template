@@ -1,31 +1,14 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { v4 as uuid } from "uuid";
 import * as Yup from 'yup'
-
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchFilters, selectAll } from "../heroesFilters/filtersSlice";
-import { heroAdd } from "../heroesList/heroesSlice";
-
-import { useCreateHeroMutation } from "../../api/apiSlice";
-import { useHttp } from "../../hooks/http.hook";
+import { useCreateHeroMutation, useGetFiltersQuery } from "../../api/apiSlice";
 
 const HeroesAddForm = () => {
 
-	const [createHero, { isLoading }] = useCreateHeroMutation();
-
-	const filters = useSelector(selectAll);
-	const { request } = useHttp();
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(fetchFilters())
-	}, [])
-
-	const pushChar = (char) => {
-		dispatch(heroAdd(char))
-		request('http://localhost:3001/heroes', "POST", JSON.stringify(char))
-	}
+	const [createHero] = useCreateHeroMutation();
+	const {
+		data: filters = []
+	} = useGetFiltersQuery()
 
 	const renderFilters = () => {
 		return (
@@ -59,7 +42,6 @@ const HeroesAddForm = () => {
 			onSubmit={(char, { resetForm }) => {
 				char.id = uuid();
 				createHero(char).unwrap();
-				// pushChar(char)
 				resetForm();
 			}}
 		>

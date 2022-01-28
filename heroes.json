@@ -57,5 +57,10 @@
       "filter": "earth",
       "option": "земля"
     }
+  ],
+  "activeFilter": [
+    {
+      "filter": "all"
+    }
   ]
 }

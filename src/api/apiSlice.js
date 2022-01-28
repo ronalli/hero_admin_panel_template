@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const apiSlice = createApi({
 	reducerPath: 'api',
-	tagTypes: ['Heroes'],
+	tagTypes: ['Heroes', 'Filters'],
 	baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
 	endpoints: builder => ({
 		getHeroes: builder.query({
@@ -23,8 +23,11 @@ export const apiSlice = createApi({
 				method: 'DELETE'
 			}),
 			invalidatesTags: ['Heroes']
+		}),
+		getFilters: builder.query({
+			query: () => '/filters',
 		})
 	})
 })
 
-export const { useGetHeroesQuery, useCreateHeroMutation, useDeleteHeroMutation } = apiSlice;
+export const { useGetHeroesQuery, useCreateHeroMutation, useDeleteHeroMutation, useGetFiltersQuery } = apiSlice;

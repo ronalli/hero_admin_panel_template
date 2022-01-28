@@ -1,11 +1,9 @@
-import { useHttp } from '../../hooks/http.hook';
-import { useEffect, useCallback, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useCallback, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { useGetHeroesQuery, useDeleteHeroMutation } from '../../api/apiSlice';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import { heroDeleted, fetchHeroes } from './heroesSlice'
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
@@ -32,19 +30,9 @@ const HeroesList = () => {
 		}
 	}, [heroes, activeFilter])
 
-	const dispatch = useDispatch();
-	const { request } = useHttp();
-
 	const onDelete = useCallback((id) => {
-		dispatch(heroDeleted(id))
-		request(`http://localhost:3001/heroes/${id}`, "DELETE")
-			.then(data => console.log('deleted'))
-			.catch(err => console.log(err))
-	}, [request])
-
-	useEffect(() => {
-		dispatch(fetchHeroes())
-	}, []);
+		deleteHero(id)
+	}, [])
 
 	if (isLoading) {
 		return <Spinner />;
@@ -71,7 +59,7 @@ const HeroesList = () => {
 				>
 					<HeroesListItem
 						{...props}
-						onDelete={() => deleteHero(id)} />
+						onDelete={() => onDelete(id)} />
 				</CSSTransition>
 			)
 		})
